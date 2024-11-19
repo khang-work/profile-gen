@@ -8,7 +8,7 @@ import (
 )
 
 // ProfileToPlainTextResume generates a plain text resume from the given profile.
-func ProfileToPlainTextResume(p *prof.Profile) string {
+func ProfileToPlainTextResume(p *prof.Profile, txtLineLength int) string {
 	sb := &strings.Builder{}
 
 	// Personal Information.
@@ -148,5 +148,5 @@ func ProfileToPlainTextResume(p *prof.Profile) string {
 		fmt.Fprintln(sb)
 	}
 
-	return sb.String()
+	return wordWrap(sb.String(), txtLineLength)
 }

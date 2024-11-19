@@ -14,6 +14,7 @@ func init() {
 	rootCmd.AddCommand(resumeCmd)
 	resumeCmd.Flags().StringP("format", "f", "txt", "Resume output format")
 	resumeCmd.Flags().StringP("output", "o", "", "Resume output file name")
+	resumeCmd.Flags().Int("txt-line-length", 1000, "Set max line length for txt format")
 }
 
 var resumeCmd = &cobra.Command{
@@ -23,14 +24,15 @@ var resumeCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		outputFormat, _ := cmd.Flags().GetString("format")
 		outputFile, _ := cmd.Flags().GetString("output")
+		txtLineLength, _ := cmd.Flags().GetInt("txt-line-length")
 
-		if err := generateResume(outputFile, outputFormat); err != nil {
+		if err := generateResume(outputFile, outputFormat, txtLineLength); err != nil {
 			log.Fatalf("Error generating resume: %s", err)
 		}
 	},
 }
 
-func generateResume(outputFile string, outputFormat string) (retErr error) {
+func generateResume(outputFile string, outputFormat string, txtLineLength int) (retErr error) {
 	writer := os.Stdout
 
 	// Use file instead of stdout if file name is provided.
@@ -52,7 +54,7 @@ func generateResume(outputFile string, outputFormat string) (retErr error) {
 
 	switch outputFormat {
 	case "txt":
-		resumeBlob := txt.ProfileToPlainTextResume(&profile)
+		resumeBlob := txt.ProfileToPlainTextResume(&profile, txtLineLength)
 		fmt.Fprintf(writer, resumeBlob)
 	}
 
