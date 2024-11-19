@@ -14,6 +14,7 @@ Whether you're a job seeker, freelancer, or professional with various roles, pro
 
 The following outlines the key features and improvements planned for profile-gen.
 
+- [x] Generate sample profile in JSON
 - [ ] Input JSON
 - [ ] Desktop GUI editor
 - [ ] Web GUI editor
@@ -21,6 +22,6 @@ The following outlines the key features and improvements planned for profile-gen
 - [ ] Writer for resume in markdown
 - [ ] Writer for resume in PDF
 - [ ] Writer for resume in DOCX
-- [ ] Writer for resume in plain text
+- [x] Writer for resume in plain text
 - [ ] ATS Optimization
 - [ ] Spell check
