@@ -26,3 +26,8 @@ The following outlines the key features and improvements planned for profile-gen
 - [x] Writer for resume in plain text
 - [ ] ATS Optimization
 - [ ] Spell check
+
+# Tech Stack
+
+- ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+- Cobra (CLI framework for Go)
